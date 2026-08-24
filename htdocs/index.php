@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $senha_usuario = $_POST['senha_usuario'];
 
     // Query de verificação do usuário e senha
-    $sql = "SELECT * FROM usuario
+    $sql = "SELECT * FROM usuarios
             WHERE email = :email_usuario 
             AND senha = :senha_usuario";
 
