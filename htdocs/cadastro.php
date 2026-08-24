@@ -7,10 +7,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $senha_usuario = $_POST['senha_usuario'];
 
     // Query de inserção
-    $sql = " ";
+    $sql = "INSERT INTO usuario (email, senha) 
+            VALUES (:email_usuario, :senha_usuario)";
+
     $stmt = $pdo->prepare($sql);
-    $stmt->bindParam();
-    $stmt->bindParam();
+
+    $stmt->bindParam(':email_usuario', $email_usuario);
+    $stmt->bindParam(':senha_usuario', $senha_usuario);
 
     try {
         $stmt->execute();

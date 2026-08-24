@@ -1,15 +1,19 @@
 <?php
 include 'conecta.php';
+
 //Verifica se o formulário enviou algo
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email_usuario = $_POST['email_usuario'];
     $senha_usuario = $_POST['senha_usuario'];
 
     // Query de verificação do usuário e senha
-    $sql = " ";
+    $sql = "SELECT * FROM usuario
+            WHERE email = :email_usuario 
+            AND senha = :senha_usuario";
+
     $stmt = $pdo->prepare($sql);
-    $stmt->bindParam();
-    $stmt->bindParam();
+    $stmt->bindParam(':email_usuario', $email_usuario);
+    $stmt->bindParam(':senha_usuario', $senha_usuario);
 
     $stmt->execute();
     $usuario = $stmt->fetch();
@@ -17,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($usuario) {
         $_SESSION['email_usuario'] = $usuario['email'];
         header('Location: inicio.php'); // Redireciona para a página inicial após login
+        exit();
     } else {
         $erro = "Usuário ou senha incorretos.";
     }
