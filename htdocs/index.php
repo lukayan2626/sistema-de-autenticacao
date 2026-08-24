@@ -8,8 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Query de verificação do usuário e senha
     $sql = "SELECT * FROM usuarios
-            WHERE email = :email_usuario 
-            AND senha = :senha_usuario";
+            WHERE email_usuario = :email_usuario 
+            AND senha_usuario = :senha_usuario";
 
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':email_usuario', $email_usuario);
