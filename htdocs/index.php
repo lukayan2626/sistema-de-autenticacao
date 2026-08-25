@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuario = $stmt->fetch();
 
     if ($usuario) {
-        $_SESSION['email_usuario'] = $usuario['email'];
+        $_SESSION['email_usuario'] = $usuario['email_usuario'];
         header('Location: inicio.php'); // Redireciona para a página inicial após login
         exit();
     } else {
