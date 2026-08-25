@@ -13,9 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email_usuario = $_SESSION['email_usuario'];
 
     // Query para alteração da senha do usuário
-    $sql = "UPDATE usuario
+    $sql = "UPDATE usuarios
             SET senha = :nova_senha 
-            WHERE email = :email_usuario";
+            WHERE email_usuario = :email_usuario";
 
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':nova_senha', $nova_senha);
